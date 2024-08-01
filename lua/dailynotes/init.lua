@@ -8,7 +8,7 @@ M._icons = false
 M._init_day_file = function(path)
 	local month_dir = (path or (vim.fn.stdpath("data") .. "/dailynotes.nvim")) .. "/" .. os.date("%Y-%m")
 	vim.fn.mkdir(month_dir, "p")
-	local day_file = month_dir .. "/" .. os.date("%d") .. ".md"
+	local day_file = month_dir .. "/" .. os.date("%-d") .. ".md"
 	if vim.fn.filereadable(day_file) == 0 then
 		vim.fn.writefile({ "" }, day_file)
 	end
@@ -17,7 +17,7 @@ end
 
 ---@return string|osdate
 M._get_day = function()
-	return os.date("%d")
+	return os.date("%-d")
 end
 
 ---@param day integer
